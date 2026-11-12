@@ -1,0 +1,7 @@
+<%@page pageEncoding="UTF-8"%>
+<% if (request.getAttribute("error") != null) { %>
+<p class="notice error" role="alert"><%= View5.h(request.getAttribute("error")) %></p>
+<% } %>
+<% if (request.getAttribute("success") != null) { %>
+<p class="notice success" role="status"><%= View5.h(request.getAttribute("success")) %></p>
+<% } %>

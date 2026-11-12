@@ -1,0 +1,6 @@
+<%@page pageEncoding="UTF-8"%>
+    </main>
+</div>
+<script src="<%= ctx %>/assets/js/restman.js" defer></script>
+</body>
+</html>

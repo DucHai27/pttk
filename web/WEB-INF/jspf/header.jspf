@@ -1,0 +1,36 @@
+<%@page pageEncoding="UTF-8"%>
+<%@page import="java.util.List,java.util.Map"%>
+<%@page import="Model.Member5,Model.Manager5"%>
+<%@page import="Model.Combo5,Model.ComboDetail5"%>
+<%@page import="Model.Dish5,Model.DishCategory5,Model.DishDetail5"%>
+<%@page import="Util.View5"%>
+<%
+    String ctx = request.getContextPath();
+    Member5 signedMember = (Member5) session.getAttribute("member");
+    String csrf = (String) session.getAttribute("csrf");
+    String pageTitle = (String) request.getAttribute("pageTitle");
+%>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= View5.h(pageTitle) %> - RestMan</title>
+    <link rel="stylesheet" href="<%= ctx %>/assets/css/restman.css">
+</head>
+<body>
+<div class="app-shell">
+    <header class="app-header">
+        <a class="brand" href="<%= ctx %>/LoginServlet5">RestMan</a>
+        <div class="account">
+        <% if (signedMember != null) { %>
+            <span><%= View5.h(signedMember.getFullName()) %></span>
+            <form action="<%= ctx %>/LogoutServlet5" method="post">
+                <input type="hidden" name="csrf" value="<%= View5.h(csrf) %>">
+                <button class="text-button" type="submit">Đăng xuất</button>
+            </form>
+        <% } %>
+        </div>
+    </header>
+    <main id="main-content">
+        <h1><%= View5.h(pageTitle) %></h1>
